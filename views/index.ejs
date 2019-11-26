@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Chat App</title>
+  <script defer src="http://localhost:3000/socket.io/socket.io.js"></script>
+  <script defer src="script.js"></script>
+  <style>
+      .button {
+        background-color: #769BFF; /* Green */
+        border: none;
+        color: white;
+        padding: 10px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+      }
+      .button {border-radius: 12px;}
+
+      input[type=text] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 3px solid #ccc;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  outline: none;
+}
+
+input[type=text]:focus {
+  border: 3px solid #555;
+}
+      </style>
+</head>
+<body>
+  <div id="header" style="position: fixed; top: 0; left: 0; width: 100%; height: 10%; background: #003E40; margin-bottom: 20px; z-index: 99;
+  -webkit-box-shadow: 10px 10px 98px -4px rgba(0,0,0,0.75);
+      -moz-box-shadow: 10px 10px 98px -4px rgba(0,0,0,0.75);
+      box-shadow: 10px 10px 98px -4px rgba(0,0,0,0.75);">
+      <h2 style="margin-left: 15%; color: #ffffff;">Chatstep.tk</h1>
+    </div><br>
+  <div id="room-container" style="margin-top: 5%; margin-left: 20%;">
+    <h3>Active Rooms</h3>
+    <% Object.keys(rooms).forEach(room => { %>
+      <div style="background: #ffffff;-webkit-box-shadow: -12px -33px 53px -42px rgba(0,0,0,0.22);
+      -moz-box-shadow: -12px -33px 53px -42px rgba(0,0,0,0.22);
+      box-shadow: -12px -33px 53px -42px rgba(0,0,0,0.22); border-radius: 5%; width: fit-content; padding: 10px; margin: 5px;">
+       <span style="font-size: 30px; color: #769BFF;"> <%= room %> </span>  <a class="button" href="/<%= room %>">Join</a></div>
+      
+    <% }) %>
+  </div>
+  <form action="/room" method="POST" style="float: right;">
+    <h3>Create new room</h3>
+    <input name="room" type="text" required>
+    <button class="button" type="submit">New Room</button>
+  </form>
+</body>
+</html>
