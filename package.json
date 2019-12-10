@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node server.js",
     "build": "grunt uglify",
-    "build-prod":"npm run build && npm run start"
+    "build-prod":"npm run start && npm run build"
   },
   "engines": {
     "node": "v10.15.3"
